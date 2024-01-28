@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { MemberController } from './member.controller';
-import { MemberService } from './member.service';
+import { MemberController } from './controllers/members.controller';
+import { MembersService } from './services/members.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ExpensesEntity, MembersEntity, MonitoringEntity, PeriodEntity, StatusEntity } from 'src/Repository';
 
@@ -13,6 +13,7 @@ import { ExpensesEntity, MembersEntity, MonitoringEntity, PeriodEntity, StatusEn
     ExpensesEntity
   ])],
   controllers: [MemberController],
-  providers: [MemberService],
+  providers: [MembersService],
+  exports: [MembersService]
 })
-export class MemberModule {}
+export class MembersModule { }

@@ -17,8 +17,10 @@ async function bootstrap() {
       maxAge: 90
     }
   );
-
+  
   await app.listen(PORT_NEST);
+  
+  console.log(`Listen app on: http://${HOST}:${PORT_NEST}`);
 
 }
 bootstrap();

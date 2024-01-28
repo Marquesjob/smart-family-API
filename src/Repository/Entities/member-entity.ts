@@ -12,10 +12,13 @@ export class MembersEntity {
   name: string;
 
   @Column()
-  login: string;
+  username: string;
 
   @Column()
   password: string;
+
+  @Column({type: "boolean", name: "first_access"})
+  firstAccess: boolean;
 
   @OneToMany(() => ExpensesEntity, expense => expense.member)
   expenses: ExpensesEntity[];
