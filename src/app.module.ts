@@ -5,8 +5,9 @@ import 'dotenv/config'
 import { 
   MonitoringModule,
   ExpenseModule,
-  MemberModule
- } from './Endpoints';
+  MembersModule,
+  AuthModule
+ } from './Modules';
 
 import { 
   MembersEntity,
@@ -19,15 +20,16 @@ import {
 @Module({
   imports: [
     ExpenseModule,
-    MemberModule,
+    MembersModule,
     MonitoringModule,
+    AuthModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.DB_HOST,
       port: 6432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'postgres',
+      username: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
       entities: [
         MembersEntity,
         ExpensesEntity,
@@ -35,8 +37,8 @@ import {
         PeriodEntity,
         StatusEntity
       ],
-      logging: true
-    }),
-  ],
+      //logging: true
+    })
+  ]
 })
 export class AppModule { }
