@@ -1,3 +1,4 @@
+export * from './auth';
 export * from './expense';
-export * from './member';
+export * from './members';
 export * from './monitoring';
